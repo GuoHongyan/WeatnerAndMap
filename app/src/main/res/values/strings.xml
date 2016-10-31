@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Test10-25</string>
+    <string name="title_activity_location">LocationActivity</string>
+    <string name="title_activity_follow_map">FollowMapActivity</string>
+    <string name="title_activity_select_city">SelectCityActivity</string>
+    <string name="title_activity_add_city">AddCityActivity</string>
+</resources>
