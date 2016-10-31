@@ -4,17 +4,10 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.maps.model.LatLng;
 
 public class Utils {
-	/**
-	 *  开始定位
-	 */
-	public final static int MSG_LOCATION_START = 0;
-	/**
-	 * 定位完成
-	 */
+	 final static int MSG_LOCATION_START = 0;
+
 	public final static int MSG_LOCATION_FINISH = 1;
-	/**
-	 * 停止定位
-	 */
+
 	public final static int MSG_LOCATION_STOP= 2;
 
 	/**
@@ -59,11 +52,7 @@ public class Utils {
 				sb.append("兴趣点    : " + location.getPoiName() + "\n");
 			}
 		} else {
-			//定位失败
-//			sb.append("定位失败" + "\n");
-//			sb.append("错误码:" + location.getErrorCode() + "\n");
-//			sb.append("错误信息:" + location.getErrorInfo() + "\n");
-//			sb.append("错误描述:" + location.getLocationDetail() + "\n");
+
 		}
 		return sb.toString();
 	}

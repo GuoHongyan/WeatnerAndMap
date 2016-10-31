@@ -41,13 +41,11 @@ public class LocationActivity extends AppCompatActivity implements LocationSourc
         requestWindowFeature(Window.FEATURE_NO_TITLE);// 不显示程序的标题栏
         setContentView(R.layout.activity_location);
         mapView = (MapView) findViewById(R.id.map);
-        mapView.onCreate(savedInstanceState);// 此方法必须重写
+        mapView.onCreate(savedInstanceState);
         init();
     }
 
-    /**
-     * 初始化
-     */
+
     private void init() {
         if (aMap == null) {
             aMap = mapView.getMap();
@@ -58,13 +56,11 @@ public class LocationActivity extends AppCompatActivity implements LocationSourc
         mLocationErrText.setVisibility(View.GONE);
     }
 
-    /**
-     * 设置一些amap的属性
-     */
-    private void setUpMap() {
-        aMap.setLocationSource(this);// 设置定位监听
-        aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
-        aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
+
+       private void setUpMap() {
+        aMap.setLocationSource(this);
+        aMap.getUiSettings().setMyLocationButtonEnabled(true);
+        aMap.setMyLocationEnabled(true);
         setupLocationStyle();
     }
 
@@ -83,18 +79,16 @@ public class LocationActivity extends AppCompatActivity implements LocationSourc
         // 将自定义的 myLocationStyle 对象添加到地图上
         aMap.setMyLocationStyle(myLocationStyle);
     }
-    /**
-     * 方法必须重写
-     */
+
+
+
     @Override
     protected void onResume() {
         super.onResume();
         mapView.onResume();
     }
 
-    /**
-     * 方法必须重写
-     */
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -102,18 +96,14 @@ public class LocationActivity extends AppCompatActivity implements LocationSourc
         deactivate();
     }
 
-    /**
-     * 方法必须重写
-     */
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mapView.onSaveInstanceState(outState);
     }
 
-    /**
-     * 方法必须重写
-     */
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -157,11 +147,8 @@ public class LocationActivity extends AppCompatActivity implements LocationSourc
         if (mlocationClient == null) {
             mlocationClient = new AMapLocationClient(this);
             mLocationOption = new AMapLocationClientOption();
-            //设置定位监听
             mlocationClient.setLocationListener(this);
-            //设置为高精度定位模式
             mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-            //设置定位参数
             mlocationClient.setLocationOption(mLocationOption);
             // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
             // 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
@@ -171,9 +158,7 @@ public class LocationActivity extends AppCompatActivity implements LocationSourc
         }
     }
 
-    /**
-     * 停止定位
-     */
+
     @Override
     public void deactivate() {
         mListener = null;

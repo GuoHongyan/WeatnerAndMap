@@ -60,20 +60,15 @@ public class FollowMapActivity extends Activity implements LocationSource,AMapLo
 //        setUpMap(new LatLng(43.828, 87.621), new LatLng(43.800, 87.621));
 
     }
-    /**绘制两个坐标点之间的线段,从以前位置到现在位置*/
-    private void setUpMap(LatLng oldData,LatLng newData ) {
 
-        // 绘制一个大地曲线
+    private void setUpMap(LatLng oldData,LatLng newData ) {
         aMap.addPolyline((new PolylineOptions())
                 .add(oldData, newData)
                 .geodesic(true).color(Color.GREEN));
-
     }
 
 
-    /**
-     * 定位成功后回调函数
-     */
+
     @Override
     public void onLocationChanged(AMapLocation amapLocation) {
         if (mListener != null && amapLocation != null) {
@@ -82,11 +77,7 @@ public class FollowMapActivity extends Activity implements LocationSource,AMapLo
                 mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
 //                //定位成功
                 LatLng newLatLng = Utils.getLocationLatLng(amapLocation);
-//                Log.e("Amap", amapLocation.getLatitude() + "," + amapLocation.getLongitude());
-//                Toast.makeText(this, amapLocation.getLatitude() + "," + amapLocation.getLongitude() , Toast.LENGTH_SHORT).show();
-//new LatLng(32.181031,121.383412)
                 if(isFirstLatLng){
-                    //记录第一次的定位信息
                     oldLatLng = newLatLng;
                     isFirstLatLng = false;
                 }
@@ -98,9 +89,6 @@ public class FollowMapActivity extends Activity implements LocationSource,AMapLo
                 }
 
             } else {
-//                String errText = "定位失败," + amapLocation.getErrorCode()+ ": " + amapLocation.getErrorInfo();
-//                Log.e("AmapErr", errText);
-//                Toast.makeText(this, errText, Toast.LENGTH_SHORT).show();
                 if(isFirstLatLng){
                     Toast.makeText(this, "定位失败", Toast.LENGTH_SHORT).show();
                 }
@@ -108,9 +96,7 @@ public class FollowMapActivity extends Activity implements LocationSource,AMapLo
         }
     }
 
-    /**
-     * 激活定位
-     */
+
     @Override
     public void activate(OnLocationChangedListener listener) {
         mListener = listener;
@@ -139,9 +125,7 @@ public class FollowMapActivity extends Activity implements LocationSource,AMapLo
         }
     }
 
-    /**
-     * 停止定位
-     */
+
     @Override
     public void deactivate() {
         mListener = null;
@@ -151,18 +135,14 @@ public class FollowMapActivity extends Activity implements LocationSource,AMapLo
         }
         mlocationClient = null;
     }
-    /**
-     * 方法必须重写
-     */
+
     @Override
     protected void onResume() {
         super.onResume();
         mapView.onResume();
     }
 
-    /**
-     * 方法必须重写
-     */
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -170,18 +150,14 @@ public class FollowMapActivity extends Activity implements LocationSource,AMapLo
         deactivate();
     }
 
-    /**
-     * 方法必须重写
-     */
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mapView.onSaveInstanceState(outState);
     }
 
-    /**
-     * 方法必须重写
-     */
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

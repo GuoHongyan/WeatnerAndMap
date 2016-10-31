@@ -117,13 +117,7 @@
 
             <!-- PM2.5整体信息块 -->
 
-            <LinearLayout
-                android:id="@+id/pm2_5_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:orientation="vertical" >
+
 
                 <!-- PM2.5详情 -->
                 <LinearLayout
@@ -133,36 +127,11 @@
                     android:paddingBottom="6.0dip"
                     android:paddingLeft="12.0dip"
                     android:paddingRight="12.0dip"
-                    android:paddingTop="6.0dip" >
+                    android:paddingTop="6.0dip"
+                    android:id="@+id/linearLayout">
                     <!-- PM2.5文字详情 -->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <!-- PM2.5 -->
-                        <TextView
-                            android:id="@+id/pm2_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:text="PM2.5"
-                            android:textColor="@android:color/white"
-                            android:textSize="12.0sp" />
-                        <!-- PM2.5数值 -->
-                        <TextView
-                            android:id="@+id/pm_data"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:text="220"
-                            android:textColor="@android:color/white"
-                            android:textSize="30.0sp"
-                            />
-                    </LinearLayout>
-                    <!-- PM2.5图片 -->
-                </LinearLayout>
 
-                <!-- 污染等级(重度污染) -->
+                    <!-- 污染等级(重度污染) -->
             </LinearLayout>
             <!-- 今日天气信息块 -->
             <RelativeLayout
@@ -171,7 +140,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/humidity"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="5.0dip" >
+                android:layout_marginTop="5.0dip"
+                android:id="@+id/relativeLayout">
 
                 <!-- 天气情况图片示例 -->
                 <ImageView
@@ -241,6 +211,45 @@
                 android:textSize="20.0sp"
                 android:layout_alignTop="@+id/humidity"
                 android:layout_toEndOf="@+id/time" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignBottom="@+id/linearLayout"
+                android:layout_alignRight="@+id/relativeLayout"
+                android:layout_alignEnd="@+id/relativeLayout"
+                android:layout_marginRight="33dp"
+                android:layout_marginEnd="33dp"
+                android:id="@+id/linearLayout2">
+                <!-- PM2.5 -->
+                <!-- PM2.5数值 -->
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/pm2_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="PM2.5"
+                android:textColor="@android:color/white"
+                android:textSize="12.0sp"
+                android:layout_alignBottom="@+id/linearLayout2"
+                android:layout_alignLeft="@+id/linearLayout2"
+                android:layout_alignStart="@+id/linearLayout2" />
+
+            <TextView
+                android:id="@+id/pm_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="220"
+                android:textColor="@android:color/white"
+                android:textSize="30.0sp"
+                android:layout_below="@+id/linearLayout2"
+                android:layout_alignLeft="@+id/linearLayout2"
+                android:layout_alignStart="@+id/linearLayout2" />
 
         </RelativeLayout>
 

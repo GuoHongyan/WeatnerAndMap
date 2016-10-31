@@ -9,7 +9,6 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
@@ -18,9 +17,9 @@ public class AddCityActivity extends Activity {
     String code;
     ListView province;
     ListView city;
-    ViewGroup.MarginLayoutParams provinceLayoutParams;//省份layout的参数
-    ViewGroup.MarginLayoutParams cityLayoutParams;//市layout的参数
-    int screenWidth;//屏幕宽度
+    ViewGroup.MarginLayoutParams provinceLayoutParams;
+    ViewGroup.MarginLayoutParams cityLayoutParams;
+    int screenWidth;
     ArrayAdapter<String> adapter2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

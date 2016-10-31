@@ -50,28 +50,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     };
 
 
-//
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.menu, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        switch(id){
-//            case R.id.location:
-//                Intent intent1=new Intent(MainActivity.this,LocationActivity.class);
-//                startActivity(intent1);
-//                break;
-//            case R.id.follow:
-//                Intent intent2=new Intent(MainActivity.this,FollowMapActivity.class);
-//                startActivity(intent2);
-//                break;
-//        }
-//        return true;
-//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,10 +127,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             SharedPreferences sharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
             Intent i = getIntent();
            String code1 = i.getStringExtra("code");
-    //        String City=i.getStringExtra("City");
-     //       if(code1==null)
-      //          Toast.makeText(MainActivity.this, City, Toast.LENGTH_SHORT).show();
-            if(code1==null)
+          if(code1==null)
             Toast.makeText(MainActivity.this, "还没有选定城市呢", Toast.LENGTH_SHORT).show();
             else {
                 String cityCode = sharedPreferences.getString("main_city_code", code1);
@@ -233,10 +208,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Log.d("myWeather", "parseXML");
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 switch (eventType) {
-                    // 判断当前事件是否为文档开始事件
                     case XmlPullParser.START_DOCUMENT:
                         break;
-                    // 判断当前事件是否为标签元素开始事件
                     case XmlPullParser.START_TAG:
                         if(xmlPullParser.getName().equals("resp")){
                             todayWeather= new TodayWeather();
@@ -289,12 +262,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                         break;
 
-
-                    // 判断当前事件是否为标签元素结束事件
                     case XmlPullParser.END_TAG:
                         break;
                 }
-                // 进入下一个元素并触发相应事件
                 eventType = xmlPullParser.next();
             }
         } catch (XmlPullParserException e) {
